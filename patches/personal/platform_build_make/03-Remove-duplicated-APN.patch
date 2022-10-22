@@ -1,0 +1,42 @@
+From 650a90529bfd8014f353b3edaa2fb429cfe86f3f Mon Sep 17 00:00:00 2001
+From: naz664 <nazimnavas145@gmail.com>
+Date: Fri, 21 Oct 2022 11:16:46 +0000
+Subject: [PATCH] Remove-duplicated-APN
+
+---
+ target/product/aosp_product.mk        | 6 ------
+ target/product/full_base_telephony.mk | 5 -----
+ 2 files changed, 11 deletions(-)
+
+diff --git a/target/product/aosp_product.mk b/target/product/aosp_product.mk
+index a4166929e..61f98defd 100644
+--- a/target/product/aosp_product.mk
++++ b/target/product/aosp_product.mk
+@@ -38,9 +38,3 @@ PRODUCT_PACKAGES += \
+     preinstalled-packages-platform-aosp-product.xml \
+     WallpaperPicker \
+ 
+-# Telephony:
+-#   Provide a APN configuration to GSI product
+-ifeq ($(ANCIENT_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+-endif
+diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
+index d5fb235c9..5470ad2be 100644
+--- a/target/product/full_base_telephony.mk
++++ b/target/product/full_base_telephony.mk
+@@ -26,10 +26,5 @@ PRODUCT_VENDOR_PROPERTIES := \
+ PRODUCT_COPY_FILES := \
+     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
+ 
+-ifeq ($(ANCIENT_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+-endif
+-
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+-- 
+2.25.1
+
