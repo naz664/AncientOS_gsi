@@ -1,0 +1,73 @@
+From ae1f99f7e2a30d23217e564ac2249e1f24b6e469 Mon Sep 17 00:00:00 2001
+From: naz664 <nazimnavas145@gmail.com>
+Date: Sat, 25 Feb 2023 20:09:03 +0530
+Subject: [PATCH] AncientSettings: add GSI
+
+---
+ res/values/maintainers_strings.xml |  6 ++++++
+ res/xml/device_maintainers.xml     | 18 +++++++++++++++++-
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/res/values/maintainers_strings.xml b/res/values/maintainers_strings.xml
+index 4b57aa5..428b7ca 100644
+--- a/res/values/maintainers_strings.xml
++++ b/res/values/maintainers_strings.xml
+@@ -20,7 +20,9 @@
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ 
+     <!-- Product -->
++
+     <string name="device_category_asus_title" translatable="false">Asus</string>
++    <string name="device_category_gsi_title" translatable="false">Gsi</string>
+     <string name="device_category_motorola_title" translatable="false">Motorola</string>
+     <string name="device_category_nokia_title" translatable="false">nokia</string>
+     <string name="device_category_oneplus_title" translatable="false">oneplus</string>
+@@ -29,12 +31,16 @@
+     <string name="device_category_xiaomi_title" translatable="false">xiaomi</string>
+ 
+     <!-- Device -->
++
+     <string name="device_Z01R" translatable="false">Asus Zenfone 5Z</string>
+     <string name="device_Z01R_summary" translatable="false">Z01R\nAyan Mukherjee (ayanm09)</string>
+  
+     <string name="device_X00T" translatable="false">Asus Zenfone Max Pro M1</string>
+     <string name="device_X00T_summary" translatable="false">X00T\nkndroid</string>
+ 
++    <string name="device_gsi" translatable="false">Generic System Image</string>
++    <string name="device_gsi_summary" translatable="false">GSI\nNazim (naz664)</string>
++
+     <string name="device_payton" translatable="false">Motorola</string>
+     <string name="device_payton_summary" translatable="false">payton\nYukki159</string>
+ 
+diff --git a/res/xml/device_maintainers.xml b/res/xml/device_maintainers.xml
+index 527b926..1d35367 100644
+--- a/res/xml/device_maintainers.xml
++++ b/res/xml/device_maintainers.xml
+@@ -44,7 +44,23 @@
+                  android:data="https://t.me/kndroid" />
+          </Preference>
+ 
+-     </PreferenceCategory>
++   </PreferenceCategory>
++
++   <PreferenceCategory
++        android:id="@+id/device_category_gsi"
++        android:title="@string/device_category_gsi_title">
++
++        <Preference
++            android:id="@+id/device_gsi"
++            android:icon="@drawable/ancient_device"
++            android:summary="@string/device_gsi_summary"
++            android:title="@string/device_gsi">
++            <intent
++                android:action="android.intent.action.VIEW"
++                android:data="https://t.me/naz664" />
++        </Preference>
++
++    </PreferenceCategory>
+ 
+     <PreferenceCategory
+         android:id="@+id/device_category_motorola"
+-- 
+2.25.1
+

@@ -10,4 +10,4 @@ These people have helped this project in some way or another, so they should be 
 - [ChonDoit](https://github.com/ChonDoit)
 
 # Website
-- [Link](https://www.ancientrom.xyz/download_list.php?brand_names=GSI)
+- [Link](https://www.ancientrom.xyz/)

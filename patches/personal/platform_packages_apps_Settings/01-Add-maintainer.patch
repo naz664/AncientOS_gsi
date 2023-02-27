@@ -1,0 +1,25 @@
+From 9afab9807030e0d3dbd5f2fede864e625fe556ff Mon Sep 17 00:00:00 2001
+From: naz664 <nazimnavas145@gmail.com>
+Date: Sun, 26 Feb 2023 05:35:30 +0000
+Subject: [PATCH] Add maintainer
+
+---
+ res/values/ancient_strings.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/res/values/ancient_strings.xml b/res/values/ancient_strings.xml
+index 5e7b3b62aa..472a6a2adc 100644
+--- a/res/values/ancient_strings.xml
++++ b/res/values/ancient_strings.xml
+@@ -25,7 +25,7 @@
+ 
+     <!-- Ancient About Maintainer Info -->
+     <string name="maintainer">Maintainer</string>
+-    <string name="maintainer_name">Unknown</string>
++    <string name="maintainer_name">Nazim</string>
+ 
+     <!-- Build Date -->
+     <string name="build_date">Build date</string>
+-- 
+2.25.1
+

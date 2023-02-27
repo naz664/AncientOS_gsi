@@ -1,0 +1,43 @@
+From 3eaebbc34555a2dc45d927bef872ed3a6789078f Mon Sep 17 00:00:00 2001
+From: naz664 <nazimnavas145@gmail.com>
+Date: Sun, 26 Feb 2023 05:31:38 +0000
+Subject: [PATCH 2/2] remove duplicated ro.adb.secure
+
+disable inline kernel building
+---
+ config/common.mk | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index 89c023fb..7ac6e662 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -14,8 +14,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=adb
+ else
+ # Enable ADB authentication
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=none
++# PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
++# PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.usb.config=none
+ 
+ # Disable extra StrictMode features on all non-engineering builds
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
+@@ -183,7 +183,7 @@ $(call inherit-product, vendor/overlays/config.mk)
+ 
+ # Variant
+ ifeq ($(ANCIENT_GAPPS), true)
+-$(call inherit-product, vendor/gms/products/gms.mk)
++$(call inherit-product, vendor/gapps/common/common-vendor.mk)
+ else
+ $(call inherit-product, vendor/ancient/config/basicapps.mk)
+ endif
+@@ -206,3 +206,5 @@ PRODUCT_PACKAGES += \
+ endif
+ 
+ -include $(WORKSPACE)/build_env/image-auto-bits.mk
++
++TARGET_NO_KERNEL_OVERRIDE := true
+-- 
+2.25.1
+
