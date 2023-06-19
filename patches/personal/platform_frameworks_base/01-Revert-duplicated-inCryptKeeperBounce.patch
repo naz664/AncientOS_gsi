@@ -1,17 +1,17 @@
-From 297283bb0be7312f369a0821a900b4583dd659f7 Mon Sep 17 00:00:00 2001
+From 23e48a04453e5193e89dcb723c0a23082b8e4490 Mon Sep 17 00:00:00 2001
 From: naz664 <nazimnavas145@gmail.com>
 Date: Sat, 12 Nov 2022 05:56:46 +0000
-Subject: [PATCH 5/5] Revert duplicated inCryptKeeperBounce()
+Subject: [PATCH] Revert duplicated inCryptKeeperBounce()
 
 ---
- core/java/android/os/storage/StorageManager.java | 15 ---------------
- 1 file changed, 15 deletions(-)
+ core/java/android/os/storage/StorageManager.java | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/core/java/android/os/storage/StorageManager.java b/core/java/android/os/storage/StorageManager.java
-index f35e16e39072..41045fe075dd 100644
+index 646a7095c1b3..3a91cb6bb8d8 100644
 --- a/core/java/android/os/storage/StorageManager.java
 +++ b/core/java/android/os/storage/StorageManager.java
-@@ -1748,21 +1748,6 @@ public class StorageManager {
+@@ -1744,20 +1744,8 @@ public class StorageManager {
          return false;
      }
  
@@ -29,10 +29,11 @@ index f35e16e39072..41045fe075dd 100644
 -    public static boolean inCryptKeeperBounce() {
 -        return false;
 -    }
--
++    /** Placebo
++    */
+ 
      /** {@hide} */
      public static boolean isFileEncryptedEmulatedOnly() {
-         return SystemProperties.getBoolean(StorageManager.PROP_EMULATE_FBE, false);
 -- 
-2.25.1
+2.17.1
 

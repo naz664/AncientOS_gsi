@@ -1,28 +1,20 @@
-From 6c75aa78007c77bc98554927992a1023c5b516df Mon Sep 17 00:00:00 2001
+From c365eecf7656ca2550ceae14f9394492166ad540 Mon Sep 17 00:00:00 2001
 From: Peter Cai <peter@typeblog.net>
 Date: Wed, 1 Jun 2022 16:56:20 -0400
-Subject: [PATCH 05/33] Implement a persistent property to override the default
+Subject: [PATCH 05/28] Implement a persistent property to override the default
  primary camera (0)
 
 Change-Id: I49b45d00bf71d7932591b3516d49a680e1b6568b
 ---
  core/java/android/hardware/Camera.java                | 5 +++++
- core/java/android/hardware/camera2/CameraManager.java | 9 ++++++++-
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ core/java/android/hardware/camera2/CameraManager.java | 9 +++++++++
+ 2 files changed, 14 insertions(+)
 
 diff --git a/core/java/android/hardware/Camera.java b/core/java/android/hardware/Camera.java
-index e501890eedfc..1a70d5343e84 100644
+index b0550a32ad7f..25270fadd217 100644
 --- a/core/java/android/hardware/Camera.java
 +++ b/core/java/android/hardware/Camera.java
-@@ -47,6 +47,7 @@ import android.os.Process;
- import android.os.RemoteException;
- import android.os.ServiceManager;
- import android.os.SystemProperties;
-+import android.os.SystemProperties;
- import android.renderscript.Allocation;
- import android.renderscript.Element;
- import android.renderscript.RSIllegalArgumentException;
-@@ -481,6 +482,10 @@ public class Camera {
+@@ -472,6 +472,11 @@ public class Camera {
       * @see #open(int)
       */
      public static Camera open() {
@@ -30,18 +22,18 @@ index e501890eedfc..1a70d5343e84 100644
 +        if (altPrimaryCamera > 0) {
 +            return new Camera(altPrimaryCamera);
 +        }
++
          int numberOfCameras = getNumberOfCameras();
          CameraInfo cameraInfo = new CameraInfo();
          for (int i = 0; i < numberOfCameras; i++) {
 diff --git a/core/java/android/hardware/camera2/CameraManager.java b/core/java/android/hardware/camera2/CameraManager.java
-index a42652dcc1d3..3a749f0eb4ae 100644
+index 7531d69ab94a..b7c27585235d 100644
 --- a/core/java/android/hardware/camera2/CameraManager.java
 +++ b/core/java/android/hardware/camera2/CameraManager.java
-@@ -1764,7 +1764,14 @@ public final class CameraManager {
-                             return s1.compareTo(s2);
+@@ -1764,6 +1764,15 @@ public final class CameraManager {
                          }
                      }});
--
+ 
 +            // HAXX: Allow overriding default primary camera (assumed to be camera 0) via property
 +            // Should match with libcameraservice/common/CameraProviderManager.cpp
 +            int altPrimaryCamera = SystemProperties.getInt("persist.sys.alt_primary_camera", -1);
@@ -50,9 +42,10 @@ index a42652dcc1d3..3a749f0eb4ae 100644
 +                cameraIds[0] = cameraIds[altPrimaryCamera];
 +                cameraIds[altPrimaryCamera] = origPrimary;
 +            }
++
          }
  
          public static boolean cameraStatusesContains(CameraStatus[] cameraStatuses, String id) {
 -- 
-2.25.1
+2.17.1
 

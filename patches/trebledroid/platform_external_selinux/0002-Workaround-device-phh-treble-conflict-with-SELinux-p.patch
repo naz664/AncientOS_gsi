@@ -1,4 +1,4 @@
-From 0ac9df0bb226833489ecb989e80358877de54a93 Mon Sep 17 00:00:00 2001
+From b629014f1d7c9053717230477e1781ad122ade74 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Wed, 31 Mar 2021 23:32:37 +0200
 Subject: [PATCH 2/8] Workaround device/phh/treble conflict with SELinux policy
@@ -111,5 +111,5 @@ index b63c1359..87db4f81 100644
  	}
  
 -- 
-2.25.1
+2.17.1
 
