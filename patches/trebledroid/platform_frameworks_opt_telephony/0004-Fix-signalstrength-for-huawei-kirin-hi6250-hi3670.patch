@@ -1,4 +1,4 @@
-From 34092eb09e199bba11ac61a3fab8fe74be86f80b Mon Sep 17 00:00:00 2001
+From 436637c5976dc6ce4f1b721acb2bb1a9dbf33f4c Mon Sep 17 00:00:00 2001
 From: Raphael Mounier <mounierr07@gmail.com>
 Date: Thu, 6 Oct 2022 08:35:38 +0200
 Subject: [PATCH 4/7] Fix signalstrength for huawei kirin (hi6250, hi3670)
@@ -181,5 +181,5 @@ index d947d53611..b74103f594 100644
          if (mRil.mSignalStrengthRegistrant != null) {
              mRil.mSignalStrengthRegistrant.notifyRegistrant(new AsyncResult (null, ss, null));
 -- 
-2.25.1
+2.17.1
 

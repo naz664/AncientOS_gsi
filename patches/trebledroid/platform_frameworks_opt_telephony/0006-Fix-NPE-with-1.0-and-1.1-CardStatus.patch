@@ -1,4 +1,4 @@
-From cf05915ac66f247dcb90641d586fe1cadc440e25 Mon Sep 17 00:00:00 2001
+From 1ed1f97405fb9cdab17da335f670517ffdc46aaa Mon Sep 17 00:00:00 2001
 From: Christian Hoffmann <chrmhoffmann@gmail.com>
 Date: Fri, 21 Oct 2022 12:58:04 +0200
 Subject: [PATCH 6/7] Fix NPE with 1.0 and 1.1 CardStatus
@@ -22,5 +22,5 @@ index 81abbe6284..b2259d3698 100644
              if (responseInfo.error == RadioError.NONE) {
                  sendMessageResponse(rr.mResult, iccCardStatus);
 -- 
-2.25.1
+2.17.1
 
