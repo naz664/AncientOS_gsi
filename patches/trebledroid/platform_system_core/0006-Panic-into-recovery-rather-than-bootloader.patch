@@ -1,0 +1,29 @@
+From 09d2b96d2c7848a3c3d5c5ff31fdd7aa5057ddde Mon Sep 17 00:00:00 2001
+From: Pierre-Hugues Husson <phh@phh.me>
+Date: Wed, 4 Sep 2019 21:11:48 +0200
+Subject: [PATCH 06/19] Panic into recovery rather than bootloader
+
+Getting last_kmsg/pstore from bootloader isn't possible for other people
+than the OEM, but we have TWRP to access last_kmsg/pstore
+
+Change-Id: If04bb6572dc66677d7b44f7d302b2d69ce526200
+---
+ init/reboot_utils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/init/reboot_utils.cpp b/init/reboot_utils.cpp
+index 4df96a95d..cd25f80f1 100644
+--- a/init/reboot_utils.cpp
++++ b/init/reboot_utils.cpp
+@@ -73,7 +73,7 @@ void SetFatalRebootTarget(const std::optional<std::string>& reboot_target) {
+                 init_fatal_reboot_target = value;
+             }
+         });
+-        // We already default to bootloader if no setting is provided.
++        // We already default to recovery if no setting is provided.
+     } else {
+         const std::string kRebootTargetStringPattern = kRebootTargetString + "=";
+         start_pos += sizeof(kRebootTargetStringPattern) - 1;
+-- 
+2.34.1
+

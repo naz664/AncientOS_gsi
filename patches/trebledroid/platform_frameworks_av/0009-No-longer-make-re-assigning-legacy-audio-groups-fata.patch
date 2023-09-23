@@ -1,7 +1,7 @@
-From 8d15a7f45e7654fbda1baf38cf1345a7a948ee65 Mon Sep 17 00:00:00 2001
+From b06e8685a62a0c73fae6e742745a59ab74e200f0 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sat, 12 Sep 2020 12:32:50 +0200
-Subject: [PATCH 09/23] No longer make re-assigning legacy audio groups fatal.
+Subject: [PATCH 09/24] No longer make re-assigning legacy audio groups fatal.
  Mi9 declares AUDIO_STREAM_PATCH and AUDIO_STREAM_REROUTING which is defined
  by framework too
 
@@ -28,5 +28,5 @@ index 99507eee5d..e31cc21b17 100644
              }
              addSupportedAttributesToGroup(group, volumeGroup, strategy);
 -- 
-2.17.1
+2.34.1
 
